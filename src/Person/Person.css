@@ -1,0 +1,28 @@
+.Person {
+  margin: auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.button {
+  margin-bottom: 10px;
+  background-color: green;
+  color: white;
+  padding: 5px;
+}
+
+.button:hover {
+  background-color: orange;
+}
+
+@media (max-width: 500px) {
+  .Person {
+    background-color: yellow;
+    color: #333;
+    font-size: 44px;
+  }
+}
