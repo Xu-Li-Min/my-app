@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Person from "./Person/Person";
-import './assets/style.css';
-import Radium, { StyleRoot } from 'radium';
+import Persons from '../components/Persons/Persons';
 
 class App2 extends Component {
   state = {
@@ -30,7 +28,7 @@ class App2 extends Component {
   };
 
   nameChange = (e, id) => {
-    const personIndex = this.state.persons.findIndex((p) => {
+    const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
@@ -68,25 +66,15 @@ class App2 extends Component {
     if (this.state.showDiv === true) {
       persons = (
         <div>
-          {this.state.persons.map((persons, index) => {
-            return (
-              <Person
-                name={persons.name}
-                age={persons.age}
-                key={persons.id}
-                click={() => this.deletePerson(index)}
-                changed={(e) => this.nameChange(e, persons.id)}
-              />
-            );
-          })}
+          <Persons
+            persons={this.state.persons}
+            click={this.deletePerson}
+            changed={this.nameChange}
+          />
         </div>
       );
 
       style.backgroundColor = 'red'
-      style[':hover'] = {
-        backgroundColor: 'pink',
-        color: 'white'
-      }
     }
 
     const classes = [];
@@ -99,7 +87,6 @@ class App2 extends Component {
     }
 
     return (
-      <StyleRoot>
       <div className="App">
         <header className="App-header">
           <h1 className={classes.join(' ')}>React App</h1>
@@ -109,9 +96,8 @@ class App2 extends Component {
           {persons}
         </header>
       </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App2);
+export default App2;

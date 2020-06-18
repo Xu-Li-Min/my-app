@@ -1,21 +1,20 @@
 import React from "react";
 import './Person.css';
-import Radium from 'radium';
 
 const Person = (props) => {
 
-  const style = {
-    '@media (max-Width: 500px)': {
-      backgroundColor: 'yellow',
-      color: '#333',
-      fontSize: '44px',
-    }
-  }
+  // const style = {
+  //   '@media (max-Width: 500px)': {
+  //     backgroundColor: 'yellow',
+  //     color: '#333',
+  //     fontSize: '44px',
+  //   }
+  // }
 
 
 
   return (
-    <div className="Person" style={style}>
+    <div className="Person">
       <p onClick={props.click} >
         我是{props.name} ，今年{props.age} 歲！
       </p>
@@ -24,4 +23,4 @@ const Person = (props) => {
   );
 };
 
-export default Radium(Person);
+export default Person;

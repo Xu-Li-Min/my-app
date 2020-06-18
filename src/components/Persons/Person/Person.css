@@ -19,6 +19,10 @@
   background-color: orange;
 }
 
+input{
+  color: #333;
+}
+
 @media (max-width: 500px) {
   .Person {
     background-color: yellow;
