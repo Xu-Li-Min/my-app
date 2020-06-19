@@ -1,0 +1,12 @@
+.red{
+  color: red;
+  position: relative;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+button:hover{
+  font-weight: bold;
+}

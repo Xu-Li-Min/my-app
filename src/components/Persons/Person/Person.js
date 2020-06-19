@@ -11,7 +11,7 @@ const Person = (props) => {
   //   }
   // }
 
-
+console.log('[Person.js] rendering...');
 
   return (
     <div className="Person">

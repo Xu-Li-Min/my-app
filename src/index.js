@@ -7,13 +7,13 @@ import App2 from "./containers/App2";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* 靜態資料 */}
-    {/* <App /> */}
+  // <React.StrictMode>
+  //   {/* 靜態資料 */}
+  //   {/* <App /> */}
 
-    {/* 動態資料 */}
-    <App2 />
-  </React.StrictMode>,
+  //   {/* 動態資料 */}
+    <App2 title="React"/>,
+  // {/* </React.StrictMode>, */}
   document.getElementById("root")
 );
 

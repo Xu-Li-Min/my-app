@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App2 extends Component {
+
+  constructor(props) {
+    super(props);
+    console.log('[App2.js] constructor');
+  }
+
   state = {
     persons: [
       { id: "id1", name: "LiMin", age: 24 },
@@ -11,6 +18,19 @@ class App2 extends Component {
     ],
     showDiv: false,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App2.js] getDerivedStateFromProps', props, state);
+    return state;
+  }
+
+  componentWillMount(){
+    console.log('[App2.js] componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App2.js] componentDidMount');
+  }
 
   // switchName = (newName, age) => {
   //   this.setState({
@@ -48,6 +68,8 @@ class App2 extends Component {
   };
 
   render() {
+    console.log('[App2.js] render');
+
     const style = {
       backgroundColor: "green",
       color: "white",
@@ -65,34 +87,17 @@ class App2 extends Component {
 
     if (this.state.showDiv === true) {
       persons = (
-        <div>
-          <Persons
-            persons={this.state.persons}
-            click={this.deletePerson}
-            changed={this.nameChange}
-          />
-        </div>
+        <Persons persons={this.state.persons} click={this.deletePerson} changed={this.nameChange} />
       );
 
       style.backgroundColor = 'red'
     }
 
-    const classes = [];
-    if (this.state.persons.length <= 2) {
-      classes.push('red');
-    }
-
-    if (this.state.persons.length <= 1) {
-      classes.push('bold');
-    }
 
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className={classes.join(' ')}>React App</h1>
-          <button className="button" onClick={this.toggleDiv}>
-            switchName
-          </button>
+          <Cockpit title={this.props.title} click={this.toggleDiv} persons={this.state.persons} />
           {persons}
         </header>
       </div>
