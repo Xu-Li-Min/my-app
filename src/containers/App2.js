@@ -17,6 +17,7 @@ class App2 extends Component {
       { id: "id3", name: "Lan", age: 23 },
     ],
     showDiv: false,
+    showCockpit: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -24,12 +25,21 @@ class App2 extends Component {
     return state;
   }
 
-  componentWillMount(){
-    console.log('[App2.js] componentWillMount');
-  }
+  // componentWillMount(){
+  //   console.log('[App2.js] componentWillMount');
+  // }
 
   componentDidMount() {
     console.log('[App2.js] componentDidMount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App2.js] shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App2.js] componentDidUpdate');
   }
 
   // switchName = (newName, age) => {
@@ -46,6 +56,12 @@ class App2 extends Component {
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   };
+
+  delCockpit = () => {
+    const doesShowCockpit = this.state.showCockpit;
+    this.setState({ showCockpit: !doesShowCockpit });
+    console.log(this.state);
+  }
 
   nameChange = (e, id) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -97,8 +113,12 @@ class App2 extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Cockpit title={this.props.title} click={this.toggleDiv} persons={this.state.persons} />
+          <button onClick={this.delCockpit}>Remove Cockpit</button>
+          {this.state.showCockpit === true ?
+            <Cockpit title={this.props.title} click={this.toggleDiv} persons={this.state.persons} />
+            : null}
           {persons}
+
         </header>
       </div>
     );
